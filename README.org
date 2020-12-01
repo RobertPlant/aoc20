@@ -1,0 +1,51 @@
+* Advent of Code 2020
+** Day 0
+*** Spec: Part 1
+*** Answer: Part 1
+#+begin_src bash :results output
+    cd day1
+    cargo test
+#+end_src
+
+
+#+begin_src bash :results output
+    cd day1
+    cargo run
+#+end_src
+*** Spec: Part 2
+*** Answer: Part 2
+#+begin_src bash :results output
+    cd day1
+    cargo test
+#+end_src
+
+
+#+begin_src bash :results output
+    cd day1
+    cargo run
+#+end_src
+** Day 1
+*** Spec: Part 1
+*** Answer: Part 1
+#+begin_src bash :results output
+    cd day1
+    cargo test
+#+end_src
+
+
+#+begin_src bash :results output
+    cd day1
+    cargo run
+#+end_src
+*** Spec: Part 2
+*** Answer: Part 2
+#+begin_src bash :results output
+    cd day1
+    cargo test
+#+end_src
+
+
+#+begin_src bash :results output
+    cd day1
+    cargo run
+#+end_src
