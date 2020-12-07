@@ -184,7 +184,7 @@ dotted black bags contain no other bags.",
     }
 
     #[test]
-    fn test_part2() {
+    fn test_part2_full_example() {
         assert_eq!(
             count_can_hold_part2(
                 "shiny gold bags contain 2 dark red bags.
@@ -201,15 +201,10 @@ dark violet bags contain no other bags.",
     }
 
     #[test]
-    fn test_part2_1() {
+    fn test_part2_one_level() {
         assert_eq!(
             count_can_hold_part2(
-                "shiny gold bags contain 2 dark red bags.
-dark red bags contain 2 dark orange bags.
-dark orange bags contain 2 dark yellow bags.
-dark yellow bags contain 2 dark green bags.
-dark green bags contain 2 dark blue bags.
-dark blue bags contain 2 dark violet bags.
+                "dark blue bags contain 2 dark violet bags.
 dark violet bags contain no other bags.",
                 "dark blue"
             ),
@@ -218,14 +213,10 @@ dark violet bags contain no other bags.",
     }
 
     #[test]
-    fn test_part2_2() {
+    fn test_part2_two_levels() {
         assert_eq!(
             count_can_hold_part2(
-                "shiny gold bags contain 2 dark red bags.
-dark red bags contain 2 dark orange bags.
-dark orange bags contain 2 dark yellow bags.
-dark yellow bags contain 2 dark green bags.
-dark green bags contain 2 dark blue bags.
+                "dark green bags contain 2 dark blue bags.
 dark blue bags contain 2 dark violet bags.
 dark violet bags contain no other bags.",
                 "dark green"
@@ -235,7 +226,7 @@ dark violet bags contain no other bags.",
     }
 
     #[test]
-    fn test_part2_() {
+    fn test_part2_original_example() {
         assert_eq!(
             count_can_hold_part2(
                 "light red bags contain 1 bright white bag, 2 muted yellow bags.
@@ -254,7 +245,7 @@ dotted black bags contain no other bags.",
     }
 
     #[test]
-    fn test_part2__() {
+    fn test_part2_gold_with_two_types_inside() {
         assert_eq!(
             count_can_hold_part2(
                 "dark olive bags contain no other bags..

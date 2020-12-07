@@ -822,11 +822,31 @@ How many individual bags are required inside your single shiny gold bag?
     cargo test
 #+end_src
 
+#+RESULTS:
+#+begin_example
+
+running 6 tests
+test tests::test ... ok
+test tests::test_part2 ... ok
+test tests::test_part2_ ... ok
+test tests::test_part2_1 ... ok
+test tests::test_part2_2 ... ok
+test tests::test_part2__ ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+#+end_example
+
 
 #+begin_src bash :results output :exports both
     cd day7
     cargo run
 #+end_src
+
+#+RESULTS:
+: Found 257
+: Found part2 1038
+
 ** Day 0
 *** Spec: Part 1
 *** Answer: Part 1
