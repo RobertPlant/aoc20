@@ -20,3 +20,43 @@ jobs:
       run: cd day1; cargo build --verbose
     - name: Run tests
       run: cd day1; cargo test --verbose
+    - name: Build
+      run: cd day2; cargo build --verbose
+    - name: Run tests
+      run: cd day2; cargo test --verbose
+    - name: Build
+      run: cd day3; cargo build --verbose
+    - name: Run tests
+      run: cd day3; cargo test --verbose
+    - name: Build
+      run: cd day4; cargo build --verbose
+    - name: Run tests
+      run: cd day4; cargo test --verbose
+    - name: Build
+      run: cd day5; cargo build --verbose
+    - name: Run tests
+      run: cd day5; cargo test --verbose
+    - name: Build
+      run: cd day6; cargo build --verbose
+    - name: Run tests
+      run: cd day6; cargo test --verbose
+    - name: Build
+      run: cd day7; cargo build --verbose
+    - name: Run tests
+      run: cd day7; cargo test --verbose
+    - name: Build
+      run: cd day8; cargo build --verbose
+    - name: Run tests
+      run: cd day8; cargo test --verbose
+    - name: Build
+      run: cd day9; cargo build --verbose
+    - name: Run tests
+      run: cd day9; cargo test --verbose
+    - name: Build
+      run: cd day10; cargo build --verbose
+    - name: Run tests
+      run: cd day10; cargo test --verbose
+    - name: Build
+      run: cd day11; cargo build --verbose
+    - name: Run tests
+      run: cd day11; cargo test --verbose
