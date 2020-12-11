@@ -1576,11 +1576,25 @@ Given the new visibility method and the rule change for occupied seats becoming 
     cargo test
 #+end_src
 
+#+RESULTS:
+:
+: running 2 tests
+: test tests::test ... ok
+: test tests::test_part2 ... ok
+:
+: test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+:
+
 
 #+begin_src bash :results output :exports both
     cd day11
     cargo run
 #+end_src
+
+#+RESULTS:
+: Part1 2338
+: Part2 2134
+
 ** Day 0
 *** Spec: Part 1
 *** Answer: Part 1
