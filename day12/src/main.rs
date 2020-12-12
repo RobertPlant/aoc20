@@ -12,7 +12,7 @@ enum Direction {
     Unknown,
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone, PartialEq)]
 struct Position {
     x: i64,
     y: i64,
@@ -71,6 +71,26 @@ fn get_new_direction(current: &Direction, movement: Movement) -> Direction {
     directions[new_index.abs() as usize % 4]
 }
 
+fn rotate_waypoint(waypoint: Position, movement: Movement) -> Position {
+    let mut new_waypoint = waypoint.clone();
+
+    for _ in 0..movement.amount / 90 {
+        new_waypoint = match movement.direction {
+            Direction::Right => Position {
+                x: new_waypoint.y,
+                y: new_waypoint.x * -1,
+            },
+            Direction::Left => Position {
+                x: new_waypoint.y * -1,
+                y: new_waypoint.x,
+            },
+            _ => new_waypoint,
+        };
+    }
+
+    new_waypoint
+}
+
 fn follow_navigation(input: &'static str) -> i64 {
     let data = parse(input);
     let mut position = Position { x: 0, y: 0 };
@@ -126,28 +146,70 @@ fn follow_navigation(input: &'static str) -> i64 {
     position.x.abs() + position.y.abs()
 }
 
+fn follow_navigation_part2(input: &'static str) -> i64 {
+    let data = parse(input);
+    let mut position = Position { x: 0, y: 0 };
+    let mut waypoint = Position { x: 10, y: 1 };
+
+    for datum in data {
+        position = match datum.direction {
+            Direction::Forward => Position {
+                x: (datum.amount * waypoint.x) + position.x,
+                y: (datum.amount * waypoint.y) + position.y,
+            },
+            _ => position,
+        };
+
+        waypoint = match datum.direction {
+            Direction::North => Position {
+                x: waypoint.x,
+                y: waypoint.y + datum.amount,
+            },
+            Direction::East => Position {
+                x: waypoint.x + datum.amount,
+                y: waypoint.y,
+            },
+            Direction::South => Position {
+                x: waypoint.x,
+                y: waypoint.y - datum.amount,
+            },
+            Direction::West => Position {
+                x: waypoint.x - datum.amount,
+                y: waypoint.y,
+            },
+            Direction::Right => rotate_waypoint(waypoint, datum),
+            Direction::Left => rotate_waypoint(waypoint, datum),
+            _ => waypoint,
+        };
+    }
+
+    position.x.abs() + position.y.abs()
+}
+
 fn main() {
     let input_data = input::get_input();
 
     println!("Part1: {:?}", follow_navigation(input_data));
+    println!("Part2: {:?}", follow_navigation_part2(input_data));
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    #[test]
-    fn test() {
-        assert_eq!(
-            follow_navigation(
-                "F10
+    static TEST_INPUT: &str = "F10
 N3
 F7
 R90
-F11"
-            ),
-            25
-        )
+F11";
+
+    #[test]
+    fn test() {
+        assert_eq!(follow_navigation(TEST_INPUT), 25)
+    }
+
+    #[test]
+    fn test_part2() {
+        assert_eq!(follow_navigation_part2(TEST_INPUT), 286)
     }
 
     #[test]
@@ -245,6 +307,62 @@ F11"
                 }
             ),
             Direction::South
+        )
+    }
+
+    #[test]
+    fn test_rotate_1() {
+        assert_eq!(
+            rotate_waypoint(
+                Position { x: 10, y: 1 },
+                Movement {
+                    direction: Direction::Right,
+                    amount: 90
+                }
+            ),
+            Position { x: 1, y: -10 },
+        )
+    }
+
+    #[test]
+    fn test_rotate_2() {
+        assert_eq!(
+            rotate_waypoint(
+                Position { x: 10, y: 1 },
+                Movement {
+                    direction: Direction::Right,
+                    amount: 270
+                }
+            ),
+            Position { x: -1, y: 10 },
+        )
+    }
+
+    #[test]
+    fn test_rotate_3() {
+        assert_eq!(
+            rotate_waypoint(
+                Position { x: 10, y: 1 },
+                Movement {
+                    direction: Direction::Left,
+                    amount: 90
+                }
+            ),
+            Position { x: -1, y: 10 },
+        )
+    }
+
+    #[test]
+    fn test_rotate_4() {
+        assert_eq!(
+            rotate_waypoint(
+                Position { x: 10, y: 1 },
+                Movement {
+                    direction: Direction::Left,
+                    amount: 270
+                }
+            ),
+            Position { x: 1, y: -10 },
         )
     }
 }
