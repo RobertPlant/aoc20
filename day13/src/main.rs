@@ -66,7 +66,6 @@ fn find_departure_alignment(input: &'static str) -> i64 {
 
     let prod = data.iter().map(|n| n.1).product::<i64>();
 
-    println!("prod {:?}", prod);
     data.iter()
         .map(|(interval, offset)| {
             let p = prod / offset;
