@@ -17,79 +17,93 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Build Day 1
-      run: cargo build --verbose
+    - name: Run Day 1
+      run: cargo run --verbose
       working-directory: day1
     - name: Run tests Day 1
       run: cargo test --verbose
       working-directory: day1
 
-    - name: Build Day 2
-      run: cargo build --verbose
+    - name: Run Day 2
+      run: cargo run --verbose
       working-directory: day2
     - name: Run tests Day 2
       run: cargo test --verbose
       working-directory: day2
 
-    - name: Build Day 3
-      run: cargo build --verbose
+    - name: Run Day 3
+      run: cargo run --verbose
       working-directory: day3
     - name: Run tests Day 3
       run: cargo test --verbose
       working-directory: day3
 
-    - name: Build Day 4
-      run: cargo build --verbose
+    - name: Run Day 4
+      run: cargo run --verbose
       working-directory: day4
     - name: Run tests Day 4
       run: cargo test --verbose
       working-directory: day4
 
-    - name: Build Day 5
-      run: cargo build --verbose
+    - name: Run Day 5
+      run: cargo run --verbose
       working-directory: day5
     - name: Run tests Day 5
       run: cargo test --verbose
       working-directory: day5
 
-    - name: Build Day 6
-      run: cargo build --verbose
+    - name: Run Day 6
+      run: cargo run --verbose
       working-directory: day6
     - name: Run tests Day 6
       run: cargo test --verbose
       working-directory: day6
 
-    - name: Build Day 7
-      run: cargo build --verbose
+    - name: Run Day 7
+      run: cargo run --verbose
       working-directory: day7
     - name: Run tests Day 7
       run: cargo test --verbose
       working-directory: day7
 
-    - name: Build Day 8
-      run: cargo build --verbose
+    - name: Run Day 8
+      run: cargo run --verbose
       working-directory: day8
     - name: Run tests Day 8
       run: cargo test --verbose
       working-directory: day8
 
-    - name: Build Day 9
-      run: cargo build --verbose
+    - name: Run Day 9
+      run: cargo run --verbose
       working-directory: day9
     - name: Run tests Day 9
       run: cargo test --verbose
       working-directory: day9
 
-    - name: Build Day 10
-      run: cargo build --verbose
+    - name: Run Day 10
+      run: cargo run --verbose
       working-directory: day10
     - name: Run tests Day 10
       run: cargo test --verbose
       working-directory: day10
 
-    - name: Build Day 11
-      run: cargo build --verbose
+    - name: Run Day 11
+      run: cargo run --verbose
       working-directory: day11
     - name: Run tests Day 11
       run: cargo test --verbose
       working-directory: day11
+
+    - name: Run Day 12
+      run: cargo run --verbose
+      working-directory: day12
+    - name: Run tests Day 12
+      run: cargo test --verbose
+      working-directory: day12
+
+    - name: Run Day 13
+      run: cargo run --verbose
+      working-directory: day13
+    - name: Run tests Day 13
+      run: cargo test --verbose
+      working-directory: day13
