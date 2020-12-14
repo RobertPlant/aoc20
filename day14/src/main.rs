@@ -72,10 +72,65 @@ fn calc(input: &'static str) -> usize {
     total
 }
 
+fn calc_part2(input: &'static str) -> usize {
+    let data = parse(input);
+    let mut hash = HashMap::new();
+    let mut total = 0;
+
+    for value in data {
+        let mut masked = String::from("");
+        for (i, m) in value.mask.chars().rev().enumerate() {
+            let source = 0b1 << i & value.mem;
+
+            match m {
+                '0' => {
+                    let s = match source > 0 {
+                        true => "1",
+                        false => "0",
+                    };
+
+                    masked = s.to_owned() + &masked;
+                }
+                _ => {
+                    masked = "1".to_owned() + &masked;
+                }
+            }
+        }
+        let mut address = value.mem | u64::from_str_radix(&masked, 2).unwrap();
+        let mut exponents = vec![];
+
+        for (i, m) in value.mask.chars().rev().enumerate() {
+            if m == 'X' {
+                let power = 2_u64.pow(i as u32);
+
+                address &= power ^ (2_u64.pow(37) - 1_u64);
+                exponents.push(power);
+            }
+        }
+
+        for mut combination in 0..2_u64.pow(exponents.len() as u32) {
+            let floating_mask = exponents.iter().fold(0, |acc, e| {
+                let digit = combination % 2;
+                combination /= 2;
+                digit * e + acc
+            });
+
+            hash.insert(address + floating_mask, value.value);
+        }
+    }
+
+    for i in hash {
+        total += i.1 as usize;
+    }
+
+    total
+}
+
 fn main() {
     let input_data = input::get_input();
 
     println!("Part1: {:?}", calc(input_data));
+    println!("Part2: {:?}", calc_part2(input_data));
 }
 
 #[cfg(test)]
@@ -125,6 +180,19 @@ mem[32455] = 1814"
                     value: 1814,
                 },
             ]
+        )
+    }
+
+    #[test]
+    fn test_part2() {
+        assert_eq!(
+            calc_part2(
+                "mask = 000000000000000000000000000000X1001X
+mem[42] = 100
+mask = 00000000000000000000000000000000X0XX
+mem[26] = 1"
+            ),
+            208
         )
     }
 }
