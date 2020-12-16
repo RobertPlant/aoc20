@@ -2235,17 +2235,101 @@ Consider the validity of the nearby tickets you scanned. What is your ticket sca
 : Part1: 23122
 
 *** Spec: Part 2
+Now that you've identified which tickets contain invalid values, discard those tickets entirely. Use the remaining valid tickets to determine which field is which.
+
+Using the valid ranges for each field, determine what order the fields appear on the tickets. The order is consistent between all tickets: if seat is the third field, it is the third field on every ticket, including your ticket.
+
+For example, suppose you have the following notes:
+
+class: 0-1 or 4-19
+row: 0-5 or 8-19
+seat: 0-13 or 16-19
+
+your ticket:
+11,12,13
+
+nearby tickets:
+3,9,18
+15,1,5
+5,14,9
+
+Based on the nearby tickets in the above example, the first position must be row, the second position must be class, and the third position must be seat; you can conclude that in your ticket, class is 12, row is 11, and seat is 13.
+
+Once you work out which field is which, look for the six fields on your ticket that start with the word departure. What do you get if you multiply those six values together?
 *** Answer: Part 2
 #+begin_src bash :results output :exports both
     cd day16
     cargo test
 #+end_src
 
+#+RESULTS:
+#+begin_example
+
+running 6 tests
+test tests::test ... ok
+test tests::test_part2 ... ok
+test tests::test_part2_2 ... ok
+test tests::test_part2_3 ... ok
+test tests::test_part2_4 ... ok
+test tests::test_part2_5 ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
+
+#+end_example
+
 
 #+begin_src bash :results output :exports both
     cd day16
     cargo run
 #+end_src
+
+#+RESULTS:
+#+begin_example
+i "109"
+i "101"
+i "79"
+i "127"
+i "71"
+i "59"
+i "67"
+i "61"
+i "173"
+i "157"
+i "163"
+i "103"
+i "83"
+i "97"
+i "73"
+i "167"
+i "53"
+i "107"
+i "89"
+i "131"
+Part1: 23122
+i "109"
+i "101"
+i "79"
+i "127"
+i "71"
+i "59"
+i "67"
+i "61"
+i "173"
+i "157"
+i "163"
+i "103"
+i "83"
+i "97"
+i "73"
+i "167"
+i "53"
+i "107"
+i "89"
+i "131"
+o:[59, 71, 79, 101, 109, 127]
+Part2: 462688861133
+#+end_example
+
 ** Day 0
 *** Spec: Part 1
 *** Answer: Part 1
